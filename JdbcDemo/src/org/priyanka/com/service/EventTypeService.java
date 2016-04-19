@@ -16,10 +16,10 @@ public class EventTypeService {
 		
 	}
 	
-	public EventType getEventType(Connection myConn, int id){
+	public EventType getEventType(Connection myConn, int id) throws SQLException{
 		Statement stmt;
 		EventType eventType = null;
-		try {
+		
 			stmt = myConn.createStatement();
 			
 			ResultSet result = stmt.executeQuery("select * from event_types where id = " + id);
@@ -33,61 +33,32 @@ public class EventTypeService {
 			
 			eventType =  new EventType(result.getInt("id"), result.getString("name"));
 			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
 		
 		return eventType;
 	}
 
-	public int addEventType(Connection myConn, EventType eventType){ 
-		try {
+	public int addEventType(Connection myConn, EventType eventType) throws SQLException{ 
 			Statement stmt = myConn.createStatement();
 			String sql = "insert into event_types (name) values ('" + eventType.getName() + "')";
-			return stmt.executeUpdate(sql);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		return 0;
-
+			return stmt.executeUpdate(sql);	
 	}
     
-	public int updateEventType(Connection myConn, EventType eventType){ 
-		try {
+	public int updateEventType(Connection myConn, EventType eventType) throws SQLException{ 
 			Statement stmt = myConn.createStatement();
 			String sql = "update event_types  set name ='" + eventType.getName() + "' where id = " + eventType.getId();
-			return stmt.executeUpdate(sql);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		return 0;
-
+			return stmt.executeUpdate(sql);		
 	}
 
-	public int deleteEventTypes(Connection myConn, EventType eventType){
-		try {
+	public int deleteEventTypes(Connection myConn, EventType eventType) throws SQLException{
 			Statement stmt = myConn.createStatement();
 			String sql = "delete from event_types where id = " + eventType.getId();
 			return stmt.executeUpdate(sql);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		return 0;
-		
 	}
 	
-	public List<EventType> getAllEventTypes(Connection myConn){
+	public List<EventType> getAllEventTypes(Connection myConn) throws SQLException{
 		List<EventType> eventTypes = new ArrayList<EventType>();
 		Statement stmt;
-	
-		try {
 			stmt = myConn.createStatement();
 			
 			ResultSet result = stmt.executeQuery("select * from event_types  ");
@@ -95,11 +66,6 @@ public class EventTypeService {
 				EventType eventType =  new EventType(result.getInt("id"), result.getString("name"));
 				eventTypes.add(eventType);
 			}
-			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		return eventTypes;
 	}
 }

@@ -1,5 +1,6 @@
 package org.priyanka.com.db;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import org.priyanka.com.models.EventType;
@@ -13,7 +14,13 @@ public class Driver {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		DatabaseConnection conn = new DatabaseConnection();
+		DatabaseConnection conn;
+		try {
+			conn = new DatabaseConnection();
+		
+		try{
+		
+		conn.getMyConn().setAutoCommit(false);  
 		UserTypeService uts = new  UserTypeService();
 		//UserType ut1 = new UserType(123, "abc");
 		//int return_val = uts.addUserType(conn.getMyConn(), ut1);
@@ -74,7 +81,30 @@ public class Driver {
 			+ user.getLastName() + " user name: " + user.getUserName() + " user type: "
 		    		+ user.getUserType().getName());
 		}
-
+		conn.getMyConn().commit();
+		}
+		catch(SQLException s){
+			System.out.println(s.getMessage());
+			try {
+				conn.getMyConn().rollback();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				System.out.println(e.getMessage());
+			}
+		}
+		catch(Exception e){
+			System.out.println(e);
+			try {
+				conn.getMyConn().rollback();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				System.out.println(e1.getMessage());
+			}
+		}
+		} catch (SQLException e2) {
+			// TODO Auto-generated catch block
+			System.out.println(e2.getMessage());
+		}
 	}
 
 }
