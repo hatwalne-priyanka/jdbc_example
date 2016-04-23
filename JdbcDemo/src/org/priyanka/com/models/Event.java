@@ -11,13 +11,13 @@ public class Event {
 	private Boolean flyer;
 	private Date event_time;
 	private EventType type;
-	
-	public Event(){
-		
+
+	public Event() {
+
 	}
-	
-	public Event(int id, String name, String description, String vdo_url, String place, Boolean flyer, Date event_time,
-			EventType type) {
+
+	public Event(int id, String name, String description, String vdo_url, String place,
+			Boolean flyer, Date event_time, EventType type) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -88,9 +88,5 @@ public class Event {
 	public void setType(EventType type) {
 		this.type = type;
 	}
-	
-	
-	
-	
 
 }

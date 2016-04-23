@@ -6,13 +6,13 @@ public class User {
 	private String LastName;
 	private String UserName;
 	private UserType UserType;
-	
-	public User(){
-		
+
+	public User() {
+
 	}
-	
+
 	public User(int id, String firstName, String lastName, String userName, UserType userType) {
-		
+
 		this.id = id;
 		FirstName = firstName;
 		LastName = lastName;
@@ -23,10 +23,11 @@ public class User {
 	public int getId() {
 		return id;
 	}
-	
+
 	public String getFirstName() {
 		return FirstName;
 	}
+
 	public UserType getUserType() {
 		return UserType;
 	}
@@ -38,15 +39,19 @@ public class User {
 	public void setFirstName(String firstName) {
 		FirstName = firstName;
 	}
+
 	public String getLastName() {
 		return LastName;
 	}
+
 	public void setLastName(String lastName) {
 		LastName = lastName;
 	}
+
 	public String getUserName() {
 		return UserName;
 	}
+
 	public void setUserName(String userName) {
 		UserName = userName;
 	}
@@ -58,6 +63,5 @@ public class User {
 	public void setType(UserType type) {
 		UserType = type;
 	}
-	
 
 }

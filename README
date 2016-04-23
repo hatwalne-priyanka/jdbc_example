@@ -1,0 +1,12 @@
+This is a sample backend code from my project for website of a dance group.
+Core Java features like Exception Handling, JDBC, I/O and data structures like string and lists are widely used
+
+Following are prerequisites in order to run this code.
+1) Install latest version of mysql 
+   https://dev.mysql.com/downloads/mysql/
+2) Install latest version of Eclipse
+   https://eclipse.org/downloads/packages/eclipse-ide-java-developers/lunar
+3) Install JDK
+	http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
+4) create a database and use dabase.sql to dump the schema.
+5) update dbconfig file with your credentials. 
